@@ -12,3 +12,4 @@ C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\obj\Debug\net9.0\refi
 C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\obj\Debug\net9.0\mini-game.pdb
 C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\obj\Debug\net9.0\mini-game.genruntimeconfig.cache
 C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\obj\Debug\net9.0\ref\mini-game.dll
+C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\obj\Debug\net9.0\mini-game.sourcelink.json
