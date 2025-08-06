@@ -1,0 +1,14 @@
+C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\bin\Debug\net9.0\mini-game.exe
+C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\bin\Debug\net9.0\mini-game.deps.json
+C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\bin\Debug\net9.0\mini-game.runtimeconfig.json
+C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\bin\Debug\net9.0\mini-game.dll
+C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\bin\Debug\net9.0\mini-game.pdb
+C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\obj\Debug\net9.0\mini-game.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\obj\Debug\net9.0\mini-game.AssemblyInfoInputs.cache
+C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\obj\Debug\net9.0\mini-game.AssemblyInfo.cs
+C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\obj\Debug\net9.0\mini-game.csproj.CoreCompileInputs.cache
+C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\obj\Debug\net9.0\mini-game.dll
+C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\obj\Debug\net9.0\refint\mini-game.dll
+C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\obj\Debug\net9.0\mini-game.pdb
+C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\obj\Debug\net9.0\mini-game.genruntimeconfig.cache
+C:\Users\hanin\OneDrive\Documents\Project\csharp\mini-game\obj\Debug\net9.0\ref\mini-game.dll
