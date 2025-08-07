@@ -4,23 +4,25 @@ using System.Security.Principal;
 Random random = new();
 int height = Console.WindowHeight - 3;
 int width = Console.WindowWidth - 5;
+Console.CursorVisible = false;
+bool isExitCommand = false;
 
 // Available player and food strings
 string[] states = ["('-')", "(^-^)", "(X_X)"];
 string[] foods = ["@@@@@", "$$$$$", "#####"];
+string state = states[random.Next(0, states.Length)];
+string food = foods[random.Next(0, foods.Length)];
 
 // Console position of the player
 int playerX = 1;
 int playerY = 1;
 
 // Console positions of all items
-int[] obstaclesX = [10, 25, 42];
-int[] obstaclesY = [5, 4, 7];
+(int[] obstaclesX, int[] obstaclesY) = RandomizeObstacles(3);
 int foodX = random.Next(2, width - 1);
 int foodY = random.Next(2, height - 1);
 
-Console.Clear();
-DrawFullMap(height, width);
+InitializeGame();
 
 void DrawHorizontalWall(int width)
 {
@@ -38,10 +40,31 @@ void DrawVerticalWall(int height, int x)
     }
 }
 
-void DrawPlayer(int x, int y)
+void DrawPlayer(int x, int y, string state)
 {
     Console.SetCursorPosition(x, y);
-    Console.Write(states[random.Next(0, states.Length)]);
+    Console.Write(state);
+}
+
+(int[], int[]) RandomizeObstacles(int numObstacles)
+{
+    int[] obstaclesX = [];
+    int[] obstaclesY = [];
+
+    for (int index = 0; index < numObstacles; index++)
+    {
+        obstaclesX = [.. obstaclesX, random.Next(1, width - 1)];
+        Array.Sort(obstaclesX); // Obstacles' x coordinates should be sorted from smallest to largest
+
+        int randomY;
+        do
+        {
+            randomY = random.Next(1, height - 1);
+        } while (obstaclesY.Contains(randomY)); // Ensure no duplicate y coordinates
+        obstaclesY = [.. obstaclesY, randomY];
+    }
+
+    return (obstaclesX, obstaclesY);
 }
 
 void DrawObstacles(int x)
@@ -51,13 +74,13 @@ void DrawObstacles(int x)
     Console.Write("//");
 }
 
-void DrawFood(int x, int y)
+void DrawFood(int x, int y, string food)
 {
     Console.SetCursorPosition(x, y);
-    Console.Write(foods[random.Next(0, foods.Length)]);
+    Console.Write(food);
 }
 
-void DrawFullMap(int height, int width)
+void DrawFullMap(int height, int width, string state, string food)
 {
     DrawHorizontalWall(width);
     for (int i = 0; i < width; i++)
@@ -65,13 +88,58 @@ void DrawFullMap(int height, int width)
         if (i == 0 || i == width - 1)
             DrawVerticalWall(height, i);
         else if (i == playerX)
-            DrawPlayer(i, playerY);
+            DrawPlayer(i, playerY, state);
         else if (obstaclesX.Contains(i))
             DrawObstacles(i);
         else if (i == foodX)
-            DrawFood(i, foodY);
+            DrawFood(i, foodY, food);
     }
     DrawHorizontalWall(width);
+}
+void MovePlayer()
+{
+    if (Console.KeyAvailable)
+    {
+        ConsoleKey key = Console.ReadKey(true).Key;
+
+        switch (key)
+        {
+            case ConsoleKey.UpArrow:
+                playerY = Math.Max(1, playerY - 1);
+                break;
+            case ConsoleKey.DownArrow:
+                playerY = Math.Min(height - 2, playerY + 1);
+                break;
+            case ConsoleKey.LeftArrow:
+                playerX = Math.Max(1, playerX - 1);
+                break;
+            case ConsoleKey.RightArrow:
+                playerX = Math.Min(width - 2, playerX + 1);
+                break;
+            case ConsoleKey.Escape:
+                isExitCommand = true;
+                return;
+        }
+
+        Console.Clear();
+        DrawFullMap(height, width, state, food);
+    }
+}
+
+void InitializeGame()
+{
+    Console.Clear();
+    DrawFullMap(height, width, state, food);
+    while (!isExitCommand)
+    {
+        MovePlayer();
+        if (playerX == foodX && playerY == foodY)
+        {
+            // If food is consumed, proceed to next level
+            playerX = 1; // Reset player position
+            playerY = 1;
+        }
+    }
 }
 
 // Console.CursorVisible = false;
